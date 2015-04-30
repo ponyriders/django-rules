@@ -3,8 +3,11 @@ from django.contrib import admin
 try:
     from django.contrib.auth import get_permission_codename
 except ImportError:  # Django < 1.6
-    raise NotImplementedError(
-        'Integrating Rules with the Admin, requires Django 1.6 or later')
+    def get_permission_codename(action, opts):
+        """
+        Returns the codename of the permission for the specified action.
+        """
+        return '%s_%s' % (action, opts.object_name.lower())
 
 
 class ObjectPermissionsModelAdminMixin(object):

@@ -21,6 +21,8 @@ def has_perm(name, *args, **kwargs):
 
 
 class ObjectPermissionBackend(object):
+    supports_object_permissions = True
+
     def authenticate(self, username, password):
         return None
 

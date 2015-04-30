@@ -4,6 +4,7 @@
 ._*
 .coverage
 .DS_Store
+.idea
 .Python
 __pycache__
 dist/
